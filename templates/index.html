@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tienda</title>
+</head>
+<style>
+    /* Estilos para el cuerpo de la página */
+    body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #f0f0f0;
+    }
+    
+    /* Estilos para el encabezado */
+    h1 {
+        color: #333;
+        text-align: center;
+    }
+    
+    /* Centrar textos h2 */
+    h2 {
+        text-align: center;
+    }
+    
+    /* Estilos para las tablas */
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        margin: 20px auto;
+    }
+    
+    th, td {
+        border: 1px solid #ccc;
+        padding: 8px;
+        text-align: left;
+    }
+    
+    th {
+        background-color: #4CAF50;
+        color: white;
+    }
+    
+    /* Estilos para los formularios */
+    form {
+        max-width: 500px;
+        margin: 20px auto;
+        padding: 20px;
+        background-color: #fff;
+        border-radius: 5px;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    }
+    
+    form label {
+        display: block;
+        margin-bottom: 8px;
+        font-weight: bold;
+    }
+    
+    form input[type="text"],
+    form input[type="email"],
+    form input[type="tel"],
+    form input[type="date"],
+    form input[type="time"],
+    form textarea {
+        width: 100%;
+        padding: 10px;
+        margin-bottom: 15px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        box-sizing: border-box;
+    }
+    
+    form input[type="submit"] {
+        background-color: #4caf50;
+        color: #fff;
+        border: none;
+        padding: 12px 20px;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+    }
+    
+    form input[type="submit"]:hover {
+        background-color: #45a049;
+    }
+    </style>
+<body>
+    <h1>TIENDA</h1>
+    
+    <h2>Agregar Cliente</h2>
+    <form action="/agregar_cliente" method="post">
+        <label for="nombre">Nombre:</label><br>
+        <input type="text" id="nombre" name="nombre"><br>
+        <label for="apellido">Apellido:</label><br>
+        <input type="text" id="apellido" name="apellido"><br>
+        <label for="correo">Correo Electrónico:</label><br>
+        <input type="email" id="correo" name="correo"><br>
+        <label for="telefono">Teléfono:</label><br>
+        <input type="tel" id="telefono" name="telefono"><br><br>
+        <input type="submit" value="Agregar Cliente">
+    </form> 
+    
+    <h2>Agregar Categoría</h2>
+    <form action="/agregar_categoria" method="post">
+        <label for="nombre_categoria">Nombre:</label><br>
+        <input type="text" id="nombre_categoria" name="Nombre"><br>
+        <label for="descripcion_categoria">Descripción:</label><br>
+        <input type="text" id="descripcion_categoria" name="descripcion"><br><br>
+        <input type="submit" value="Agregar Categoría">
+    </form>
+    
+    <h2>Agregar Producto</h2>
+    <form action="/agregar_producto" method="post">
+        <label for="nombre_producto">Nombre:</label><br>
+        <input type="text" id="nombre_producto" name="Nombre"><br>
+        <label for="descripcion_producto">Descripción:</label><br>
+        <input type="text" id="descripcion_producto" name="descripcion"><br>
+        <label for="precio_producto">Precio:</label><br>
+        <input type="text" id="precio_producto" name="precio"><br>
+        <label for="id_categoria_producto">ID Categoría:</label><br>
+        <input type="text" id="id_categoria_producto" name="id_categoria"><br><br>
+        <input type="submit" value="Agregar Producto">
+    </form>
+    
+    <h2>Agregar Compra</h2>
+    <form action="/agregar_compra" method="post">
+        <label for="fecha_compra">Fecha:</label><br>
+        <input type="date" id="fecha_compra" name="fecha"><br>
+        <label for="hora_compra">Hora:</label><br>
+        <input type="time" id="hora_compra" name="hora"><br>
+        <label for="precio_compra">Precio:</label><br>
+        <input type="text" id="precio_compra" name="precio"><br>
+        <label for="id_cliente_compra">ID Cliente:</label><br>
+        <input type="text" id="id_cliente_compra" name="id_cliente"><br><br>
+        <input type="submit" value="Agregar Compra">
+    </form>
+    
+    <h2>Agregar Detalle de Pedido</h2>
+    <form action="/agregar_detalle_pedido" method="post">
+        <label for="cantidad">Cantidad:</label><br>
+        <input type="text" id="cantidad" name="cantidad"><br>
+        <label for="precio_unidad">Precio Unidad:</label><br>
+        <input type="text" id="precio_unidad" name="precio_unidad"><br>
+        <label for="id_producto">ID Producto:</label><br>
+        <input type="text" id="id_producto" name="id_producto"><br>
+        <label for="id_compra">ID Compra:</label><br>
+        <input type="text" id="id_compra" name="id_compra"><br><br>
+        <input type="submit" value="Agregar Detalle de Pedido">
+    </form>
+
+
+     <!-- Lista de clientes -->
+    <h2>Lista de Clientes</h2>
+    <table>
+        <tr>
+            <th>Nombre</th>
+            <th>Apellido</th>
+            <th>Correo Electrónico</th>
+            <th>Teléfono</th>
+        </tr>
+        {% for cliente in clientes %}
+        <tr>
+            <td>{{ cliente.Nombre }}</td>
+            <td>{{ cliente.Apellido }}</td>
+            <td>{{ cliente.CorreoElectronico }}</td>
+            <td>{{ cliente.Telefono }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+    
+    <!-- Lista de categorías -->
+    <h2>Lista de Categorías</h2>
+    <table>
+        <tr>
+            <th>Nombre</th>
+            <th>Descripción</th>
+        </tr>
+        {% for categoria in categorias %}
+        <tr>
+            <td>{{ categoria.Nombre }}</td>
+            <td>{{ categoria.Descripcion }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+
+    <!-- Lista de productos -->
+    <h2>Lista de Productos</h2>
+    <table>
+        <tr>
+            <th>Nombre</th>
+            <th>Descripción</th>
+            <th>Precio</th>
+        </tr>
+        {% for producto in productos %}
+        <tr>
+            <td>{{ producto.Nombre }}</td>
+            <td>{{ producto.Descripcion }}</td>
+            <td>{{ producto.Precio }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+
+    <!-- Lista de compras -->
+    <h2>Lista de Compras</h2>
+    <table>
+        <tr>
+            <th>Fecha</th>
+            <th>Hora</th>
+            <th>Precio</th>
+        </tr>
+        {% for compra in compras %}
+        <tr>
+            <td>{{ compra.Fecha }}</td>
+            <td>{{ compra.Hora }}</td>
+            <td>{{ compra.Precio }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+
+    <!-- Lista de detalles de pedidos -->
+    <h2>Lista de Detalles de Pedidos</h2>
+    <table>
+        <tr>
+            <th>Cantidad</th>
+            <th>Precio Unidad</th>
+        </tr>
+        {% for detalles_pedido in detalles_pedidos %}
+        <tr>
+            <td>{{ detalles_pedido.Cantidad }}</td>
+            <td>{{ detalles_pedido.Precio_Unidad }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+</body>
+</html>
